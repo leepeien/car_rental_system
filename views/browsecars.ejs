@@ -23,16 +23,7 @@
   <div class="container mt-4">
     <h2 class="text-center mb-4">Welcome, <%= user.username %>!</h2>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <div>
-        <a href="/cart">🛒 My Rental Cart</a> | 
-        <a href="/logout">Logout</a>
-      </div>
-      <form action="/search" method="GET" class="d-flex">
-        <input type="text" name="q" class="form-control me-2" placeholder="Search cars..." value="<%= searchTerm %>">
-        <button class="btn btn-primary" type="submit">Search</button>
-      </form>
-    </div>
+  <%- include('navbar'); %>
 
     <div class="row">
       <% if (cars.length === 0) { %>
@@ -54,7 +45,8 @@
               <button type="submit" class="btn btn-success w-100">Add to Rental Cart</button>
             </form>
 
-            <a href="/cars/<%= car.carId %>" class="btn btn-outline-primary w-100">View Details</a>
+            <a href="/cars/<%= car.carId %>" class="btn btn-outline-primary w-100 mb-2">View Details</a>
+            <a href="/book/<%= car.carId %>" class="btn btn-primary w-100">Book</a>
           </div>
         </div>
       <% }) %>

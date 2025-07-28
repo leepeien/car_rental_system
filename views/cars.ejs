@@ -8,6 +8,7 @@
 </head>
 <body>
   <%- include('navbar'); %>
+
   <div class="container mt-4">
     <h2 class="mb-3">Car Inventory</h2>
 
@@ -52,6 +53,8 @@
               <% if (typeof isAdminPage !== 'undefined' && isAdminPage) { %>
                 <a class="btn btn-sm btn-warning" href="/updateCars/<%= c.carId %>">Edit</a>
                 <a class="btn btn-sm btn-danger" href="/deleteCar/<%= c.carId %>" onclick="return confirm('Delete this car?')">Delete</a>
+              <% } else { %>
+                <a class="btn btn-sm btn-success" href="/bookCar/<%= c.carId %>">Book</a>
               <% } %>
             </td>
           </tr>
@@ -60,9 +63,11 @@
     </table>
 
     <div class="mt-3 d-flex gap-2">
-      <a class="btn btn-success" href="/add-car">Add Car</a>
+  <% if (typeof isAdminPage !== 'undefined' && isAdminPage) { %>
+    <a class="btn btn-success" href="/add-car">Add Car</a>
+  <% } %>
 
-      <!-- Search form -->
+
       <form action="/search" method="get" class="d-inline-block">
         <input type="text" name="q" placeholder="Search cars..." class="form-control d-inline-block" style="width: 200px; display: inline;">
         <button type="submit" class="btn btn-secondary ms-2">Search</button>
