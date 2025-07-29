@@ -1,1 +1,0 @@
-SELECT * FROM car_rental_system.users;
